@@ -14,7 +14,7 @@
 		5008C50F19C5A5640027A5BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5008C50E19C5A5640027A5BA /* main.m */; };
 		5008C51319C5A5640027A5BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5008C51219C5A5640027A5BA /* AppDelegate.m */; };
 		5008C51619C5A5640027A5BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5008C51419C5A5640027A5BA /* Main.storyboard */; };
-		5008C51919C5A5640027A5BA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5008C51819C5A5640027A5BA /* ViewController.m */; };
+		5008C51919C5A5640027A5BA /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5008C51819C5A5640027A5BA /* CalculatorViewController.m */; };
 		5008C51B19C5A5640027A5BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5008C51A19C5A5640027A5BA /* Images.xcassets */; };
 		5008C52219C5A5640027A5BA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008C52119C5A5640027A5BA /* XCTest.framework */; };
 		5008C52319C5A5640027A5BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008C50219C5A5640027A5BA /* Foundation.framework */; };
@@ -45,8 +45,8 @@
 		5008C51119C5A5640027A5BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5008C51219C5A5640027A5BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5008C51519C5A5640027A5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5008C51719C5A5640027A5BA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5008C51819C5A5640027A5BA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5008C51719C5A5640027A5BA /* CalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
+		5008C51819C5A5640027A5BA /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		5008C51A19C5A5640027A5BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5008C52019C5A5640027A5BA /* CalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5008C52119C5A5640027A5BA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -115,8 +115,8 @@
 				5008C51119C5A5640027A5BA /* AppDelegate.h */,
 				5008C51219C5A5640027A5BA /* AppDelegate.m */,
 				5008C51419C5A5640027A5BA /* Main.storyboard */,
-				5008C51719C5A5640027A5BA /* ViewController.h */,
-				5008C51819C5A5640027A5BA /* ViewController.m */,
+				5008C51719C5A5640027A5BA /* CalculatorViewController.h */,
+				5008C51819C5A5640027A5BA /* CalculatorViewController.m */,
 				5008C51A19C5A5640027A5BA /* Images.xcassets */,
 				5008C50919C5A5640027A5BA /* Supporting Files */,
 			);
@@ -249,7 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5008C51919C5A5640027A5BA /* ViewController.m in Sources */,
+				5008C51919C5A5640027A5BA /* CalculatorViewController.m in Sources */,
 				5008C51319C5A5640027A5BA /* AppDelegate.m in Sources */,
 				5008C50F19C5A5640027A5BA /* main.m in Sources */,
 			);
