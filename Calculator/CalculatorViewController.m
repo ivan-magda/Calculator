@@ -54,11 +54,11 @@ static const NSInteger kMinPortViewTextSize = 30;
 
 - (void)checkForUpdatePortViewFont
 {
-    if (_lengthOfExpression == 10 || _lengthOfExpression  > 10) {
+    if (_lengthOfExpression == 11 || _lengthOfExpression  > 11) {
         self.portView.font = [UIFont fontWithName:@"Arial" size:kMinPortViewTextSize];
     }
     else if (_lengthOfExpression >= 0 &&
-             _lengthOfExpression < 10)
+             _lengthOfExpression < 11)
         self.portView.font = [UIFont fontWithName:@"Arial" size:kMaxPortViewTextSize];
 }
 
