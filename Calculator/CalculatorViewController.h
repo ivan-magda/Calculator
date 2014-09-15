@@ -11,10 +11,10 @@
 
 @interface CalculatorViewController : UIViewController
                                      <CalculatorViewControllerProtocol>
-
 // properties
 @property (nonatomic, strong) id<CalculatorViewControllerProtocol> delegate;
 @property (nonatomic) CGFloat resultValue;
+
 // Outlets
 @property (weak, nonatomic) IBOutlet UILabel *portView;
 

@@ -16,10 +16,14 @@ static const NSInteger kMinPortViewTextSize = 30;
 
 @end
 
-@implementation CalculatorViewController {
-    NSMutableString *_stringExpressionForShowAtPortView;
-    NSMutableString *_stringForCalculateExpression;
+@implementation CalculatorViewController
+{
+    NSMutableString *_stringExpressionForShowAtPortView; //this string displayed at the UILabel
+    
+    NSMutableString *_stringForCalculateExpression; //this string needs for correct calculation of expressions
+    
     BOOL _newExpression;
+    
     NSInteger _lengthOfExpression;
 }
 
@@ -29,18 +33,19 @@ static const NSInteger kMinPortViewTextSize = 30;
 {
     [super viewDidLoad];
     
-    [self newExpression];
+    [self startNewExpression];
 }
 
-- (void)newExpression {
-    _stringExpressionForShowAtPortView = [@"0" mutableCopy];
-    _stringForCalculateExpression = [@"0.0" mutableCopy];
+- (void)startNewExpression {
+    _stringExpressionForShowAtPortView = [@"0"   mutableCopy];
+    _stringForCalculateExpression      = [@"0.0" mutableCopy];
     _newExpression = YES;
     _lengthOfExpression = 1;
     
     [self updatePortViewText];
-    [self checkForUpdatePortViewFont];
 }
+
+#pragma mark - Configurate PortView -
 
 - (void)updatePortViewText {
     self.portView.text = _stringExpressionForShowAtPortView;
@@ -48,30 +53,30 @@ static const NSInteger kMinPortViewTextSize = 30;
 
 - (void)checkForUpdatePortViewFont
 {
-    if (_lengthOfExpression == 10 ||
-        _lengthOfExpression  > 10)
-    {
+    if (_lengthOfExpression == 10 || _lengthOfExpression  > 10) {
         self.portView.font = [UIFont fontWithName:@"Arial" size:kMinPortViewTextSize];
     }
     else if (_lengthOfExpression >= 0 &&
-             _lengthOfExpression < 10) {
+             _lengthOfExpression < 10)
         self.portView.font = [UIFont fontWithName:@"Arial" size:kMaxPortViewTextSize];
-    }
 }
 
-- (BOOL)isNewExpression {
+
+#pragma mark - SetUp inputData for Calculate -
+
+- (BOOL)isNewExpression
+{
     if (_newExpression) {
         _newExpression = NO;
         return YES;
-    } else {
-        return NO;
     }
+    return NO;
 }
 
 - (void)addSymbolToExpression:(NSString *)symbol
 {
     BOOL isNewExpression = [self isNewExpression];
-    [self setupExpressionForCalculate:symbol isNewExpression:isNewExpression];
+    [self setupExpressionStringForCalculateWith:symbol isNewExpression:isNewExpression];
     
     if (isNewExpression) {
         _stringExpressionForShowAtPortView = [symbol mutableCopy];
@@ -84,24 +89,21 @@ static const NSInteger kMinPortViewTextSize = 30;
     [self updatePortViewText];
 }
 
-- (void)setupExpressionForCalculate:(NSString *)symbol isNewExpression:(BOOL)newExpression
+- (void)setupExpressionStringForCalculateWith:(NSString *)symbol isNewExpression:(BOOL)newExpression
 {
     if (newExpression)
     {
-        if ([self isNumber:symbol]) {
+        if ([self isNumber:symbol])
             _stringForCalculateExpression = [NSMutableString stringWithFormat:@"1.0*%@",symbol];
-        } else {
+        else
             _stringForCalculateExpression = [symbol mutableCopy];
-        }
     }
     else if (!newExpression)
     {
         if ([self isNumber:symbol]) {
             [_stringForCalculateExpression appendString:[NSMutableString stringWithFormat:@"%@",symbol]];
         } else {
-            if ([symbol isEqualToString:@"*"] ||
-                [symbol isEqualToString:@"("])
-            {
+            if ([symbol isEqualToString:@"*"] || [symbol isEqualToString:@"("]) {
                 [_stringForCalculateExpression appendString:symbol];
             } else {
                 [_stringForCalculateExpression appendString:[NSMutableString stringWithFormat:@"*1.0%@",symbol]];
@@ -110,7 +112,8 @@ static const NSInteger kMinPortViewTextSize = 30;
     }
 }
 
-- (BOOL)isNumber:(NSString *)string {
+- (BOOL)isNumber:(NSString *)string
+{
     if ([string isEqualToString:@"0"]) {
         return YES;
     }
@@ -144,9 +147,23 @@ static const NSInteger kMinPortViewTextSize = 30;
     return NO;
 }
 
+#pragma mark - Calculate process:
+
 - (void)calculateExpression {
     [self calculatorViewController:self didAskedForCalculatingExpression:_stringForCalculateExpression];
 }
+
+#pragma mark   CalculatorViewControllerProtocol
+
+- (void)calculatorViewController:(CalculatorViewController *)controller didAskedForCalculatingExpression:(NSString *)expression
+{
+    self.delegate = [[CalculateExpression alloc]init];
+    
+    [self.delegate calculatorViewController:controller didAskedForCalculatingExpression:expression];
+}
+
+
+#pragma mark - Show Result on Screen -
 
 - (void)showResult {
     _lengthOfExpression = (CGFloat)[[NSString stringWithFormat:@"%@",@(self.resultValue)]length];
@@ -168,21 +185,12 @@ static const NSInteger kMinPortViewTextSize = 30;
     }
 }
 
-#pragma mark - CalculatorViewControllerProtocol -
-
-- (void)calculatorViewController:(CalculatorViewController *)controller didAskedForCalculatingExpression:(NSString *)expression
-{
-    self.delegate = [[CalculateExpression alloc]init];
-    
-    [self.delegate calculatorViewController:controller didAskedForCalculatingExpression:expression];
-}
-
 #pragma mark - Actions:
 
-#pragma mark Operations -
+#pragma mark Operations
 
 - (IBAction)acButtonPressed:(UIButton *)sender {
-    [self newExpression];
+    [self startNewExpression];
 }
 
 - (IBAction)leftBracketButtonPressed:(UIButton *)sender {
@@ -218,7 +226,7 @@ static const NSInteger kMinPortViewTextSize = 30;
     [self addSymbolToExpression:@","];
 }
 
-#pragma mark Numbers Buttons -
+#pragma mark Numbers Buttons
 
 - (IBAction)zeroButtonPressed:(UIButton *)sender {
     [self addSymbolToExpression:@"0"];
