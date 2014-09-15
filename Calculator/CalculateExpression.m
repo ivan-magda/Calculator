@@ -15,9 +15,23 @@
 
 - (void)calculatorViewController:(CalculatorViewController *)controller didAskedForCalculatingExpression:(NSString *)expression
 {
-    NSExpression *calculateExpression = [NSExpression expressionWithFormat:expression];
-    CGFloat value = [[calculateExpression expressionValueWithObject:nil context:nil]floatValue];
-    controller.resultValue = value;
+    @try {
+        NSExpression *calculateExpression = [NSExpression expressionWithFormat:expression];
+        CGFloat value = [[calculateExpression expressionValueWithObject:nil context:nil]floatValue];
+        controller.resultValue = value;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Input is not an expression!");
+        
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Exception"
+                                                           message:@"Incorrect input data"
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+        [alertView show];
+    }
+    @finally {
+    }
 }
 
 @end

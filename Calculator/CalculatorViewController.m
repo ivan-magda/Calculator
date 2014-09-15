@@ -191,7 +191,7 @@ static const NSInteger kMinPortViewTextSize = 30;
     }
 }
 
-#pragma mark - Animations -
+#pragma mark - Animation -
 
 - (void)showAnimationAtResult:(BOOL)isResult orAcButtonPressed:(BOOL)isButton {
     CGFloat originalAlpha = self.portView.alpha;
