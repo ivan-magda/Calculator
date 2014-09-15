@@ -43,6 +43,7 @@ static const NSInteger kMinPortViewTextSize = 30;
     _lengthOfExpression = 1;
     
     [self updatePortViewText];
+    [self checkForUpdatePortViewFont];
 }
 
 #pragma mark - Configurate PortView -
@@ -166,10 +167,15 @@ static const NSInteger kMinPortViewTextSize = 30;
 #pragma mark - Show Result on Screen -
 
 - (void)showResult {
-    _lengthOfExpression = (CGFloat)[[NSString stringWithFormat:@"%@",@(self.resultValue)]length];
+    _lengthOfExpression = (CGFloat)[[NSString stringWithFormat:@"%@",@(self.resultValue)] length];
+    
     [self outputResultSetUp];
     [self updatePortViewText];
     [self checkForUpdatePortViewFont];
+    
+    NSLog(@"%ld", (long)_lengthOfExpression);
+    NSLog(@"%f", self.resultValue);
+    NSLog(@"%@", _stringExpressionForShowAtPortView);
 }
 
 - (void)outputResultSetUp {
@@ -180,9 +186,30 @@ static const NSInteger kMinPortViewTextSize = 30;
         _stringExpressionForShowAtPortView = [NSMutableString stringWithFormat:@"%ld", (long)integerPart];
         _stringForCalculateExpression = [NSMutableString stringWithFormat:@"%ld.0",integerPart];
     } else {
-        _stringExpressionForShowAtPortView = [NSMutableString stringWithFormat:@"%f", self.resultValue];
-        _stringForCalculateExpression = [NSMutableString stringWithFormat:@"%f",self.resultValue];
+        _stringExpressionForShowAtPortView = [NSMutableString stringWithFormat:@"%@",@(self.resultValue)];
+        _stringForCalculateExpression = [NSMutableString stringWithFormat:@"%@",@(self.resultValue)];
     }
+}
+
+#pragma mark - Animations -
+
+- (void)showAnimationAtResult:(BOOL)isResult orAcButtonPressed:(BOOL)isButton {
+    CGFloat originalAlpha = self.portView.alpha;
+    self.portView.alpha = 0;
+    [UIView animateWithDuration:0.25
+                          delay:0
+                        options:UIViewAnimationOptionCurveEaseIn |UIViewAnimationOptionAllowAnimatedContent
+                     animations:^{
+                         if (isResult) {
+                             [self showResult];
+                             self.portView.alpha = originalAlpha;
+                         }
+                         else
+                             self.portView.alpha = originalAlpha;
+                     }
+                     completion:^(BOOL finished) {
+                         finished = YES;
+                     }];
 }
 
 #pragma mark - Actions:
@@ -191,6 +218,7 @@ static const NSInteger kMinPortViewTextSize = 30;
 
 - (IBAction)acButtonPressed:(UIButton *)sender {
     [self startNewExpression];
+    [self showAnimationAtResult:NO orAcButtonPressed:YES];
 }
 
 - (IBAction)leftBracketButtonPressed:(UIButton *)sender {
@@ -219,7 +247,7 @@ static const NSInteger kMinPortViewTextSize = 30;
 
 - (IBAction)equalButtonPressed:(UIButton *)sender {
     [self calculateExpression];
-    [self showResult];
+    [self showAnimationAtResult:YES orAcButtonPressed:NO];
 }
 
 - (IBAction)pointButtonPressed:(UIButton *)sender {
