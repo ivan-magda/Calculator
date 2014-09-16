@@ -62,6 +62,13 @@ static const NSInteger kMinPortViewTextSize = 30;
         self.portView.font = [UIFont fontWithName:@"Arial" size:kMaxPortViewTextSize];
 }
 
+- (BOOL)isThisSymbolDivisionOrMultiplicationSign:(NSString *)symbol {
+    if ([symbol isEqualToString:@"/"] ||
+        [symbol isEqualToString:@"*"])
+        return YES;
+    else
+        return NO;
+}
 
 #pragma mark - SetUp inputData for Calculate -
 
@@ -82,6 +89,15 @@ static const NSInteger kMinPortViewTextSize = 30;
     if (isNewExpression) {
         _stringExpressionForShowAtPortView = [symbol mutableCopy];
     } else {
+        
+        if ([self isThisSymbolDivisionOrMultiplicationSign:symbol]) {
+            if ([symbol isEqualToString:@"/"]) {
+                symbol = @"÷";
+            } else if ([symbol isEqualToString:@"*"]) {
+                symbol = @"×";
+            }
+        }
+        
         [_stringExpressionForShowAtPortView appendString:symbol];
         _lengthOfExpression++;
         

@@ -162,17 +162,17 @@
 			children = (
 				5086565B19C691F400A27BE8 /* CalculateExpression.h */,
 				5086565C19C691F400A27BE8 /* CalculateExpression.m */,
-				5086566119C6D6F700A27BE8 /* Protocol */,
+				5086566119C6D6F700A27BE8 /* Protocols */,
 			);
 			name = "Сalculation";
 			sourceTree = "<group>";
 		};
-		5086566119C6D6F700A27BE8 /* Protocol */ = {
+		5086566119C6D6F700A27BE8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				5086565F19C6A39B00A27BE8 /* CalculatorViewControllerProtocol.h */,
 			);
-			name = Protocol;
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
