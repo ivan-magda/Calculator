@@ -223,9 +223,7 @@ static const NSInteger kMinPortViewTextSize = 30;
                          else
                              self.portView.alpha = originalAlpha;
                      }
-                     completion:^(BOOL finished) {
-                         finished = YES;
-                     }];
+                     completion:nil];
 }
 
 #pragma mark - Actions:
