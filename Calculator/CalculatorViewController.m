@@ -200,7 +200,7 @@ static const NSInteger kMinPortViewTextSize = 30;
     
     if (fractionPart == 0.0) {
         _stringExpressionForShowAtPortView = [NSMutableString stringWithFormat:@"%ld", (long)integerPart];
-        _stringForCalculateExpression = [NSMutableString stringWithFormat:@"%ld.0",integerPart];
+        _stringForCalculateExpression = [NSMutableString stringWithFormat:@"%ld.0",(long)integerPart];
     } else {
         _stringExpressionForShowAtPortView = [NSMutableString stringWithFormat:@"%@",@(self.resultValue)];
         _stringForCalculateExpression = [NSMutableString stringWithFormat:@"%@",@(self.resultValue)];
