@@ -129,6 +129,9 @@ static const NSInteger kMinPortViewTextSize = 30;
     }
 }
 
+
+#warning переделай это, не позорься
+
 - (BOOL)isNumber:(NSString *)string
 {
     if ([string isEqualToString:@"0"]) {
