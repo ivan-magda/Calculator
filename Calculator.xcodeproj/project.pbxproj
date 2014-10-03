@@ -21,6 +21,7 @@
 		5008C52419C5A5640027A5BA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5008C50619C5A5640027A5BA /* UIKit.framework */; };
 		5008C52C19C5A5640027A5BA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5008C52A19C5A5640027A5BA /* InfoPlist.strings */; };
 		5008C52E19C5A5640027A5BA /* CalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5008C52D19C5A5640027A5BA /* CalculatorTests.m */; };
+		504C8F2E19DE2B380040BDAC /* FunctionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C8F2D19DE2B380040BDAC /* FunctionsViewController.m */; };
 		5086565D19C691F400A27BE8 /* CalculateExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 5086565C19C691F400A27BE8 /* CalculateExpression.m */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		5008C52919C5A5640027A5BA /* CalculatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CalculatorTests-Info.plist"; sourceTree = "<group>"; };
 		5008C52B19C5A5640027A5BA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5008C52D19C5A5640027A5BA /* CalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorTests.m; sourceTree = "<group>"; };
+		504C8F2C19DE2B380040BDAC /* FunctionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionsViewController.h; sourceTree = "<group>"; };
+		504C8F2D19DE2B380040BDAC /* FunctionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionsViewController.m; sourceTree = "<group>"; };
 		5086565B19C691F400A27BE8 /* CalculateExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculateExpression.h; sourceTree = "<group>"; };
 		5086565C19C691F400A27BE8 /* CalculateExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculateExpression.m; sourceTree = "<group>"; };
 		5086565F19C6A39B00A27BE8 /* CalculatorViewControllerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorViewControllerProtocol.h; sourceTree = "<group>"; };
@@ -119,8 +122,7 @@
 				5008C51119C5A5640027A5BA /* AppDelegate.h */,
 				5008C51219C5A5640027A5BA /* AppDelegate.m */,
 				5008C51419C5A5640027A5BA /* Main.storyboard */,
-				5008C51719C5A5640027A5BA /* CalculatorViewController.h */,
-				5008C51819C5A5640027A5BA /* CalculatorViewController.m */,
+				504C8F2F19DE2BD30040BDAC /* ViewControllers */,
 				5086566019C6D6DF00A27BE8 /* Сalculation */,
 				5008C51A19C5A5640027A5BA /* Images.xcassets */,
 				5008C50919C5A5640027A5BA /* Supporting Files */,
@@ -155,6 +157,17 @@
 				5008C52A19C5A5640027A5BA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		504C8F2F19DE2BD30040BDAC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5008C51719C5A5640027A5BA /* CalculatorViewController.h */,
+				5008C51819C5A5640027A5BA /* CalculatorViewController.m */,
+				504C8F2C19DE2B380040BDAC /* FunctionsViewController.h */,
+				504C8F2D19DE2B380040BDAC /* FunctionsViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		5086566019C6D6DF00A27BE8 /* Сalculation */ = {
@@ -276,6 +289,7 @@
 				5008C51319C5A5640027A5BA /* AppDelegate.m in Sources */,
 				5086565D19C691F400A27BE8 /* CalculateExpression.m in Sources */,
 				5008C50F19C5A5640027A5BA /* main.m in Sources */,
+				504C8F2E19DE2B380040BDAC /* FunctionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -389,7 +403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -403,7 +417,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -418,7 +432,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
