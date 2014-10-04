@@ -129,42 +129,9 @@ static const NSInteger kMinPortViewTextSize = 30;
     }
 }
 
-
-#warning переделай это, не позорься
-
-- (BOOL)isNumber:(NSString *)string
-{
-    if ([string isEqualToString:@"0"]) {
-        return YES;
-    }
-    else if ([string isEqualToString:@"1"]) {
-        return YES;
-    }
-    else if ([string isEqualToString:@"2"]) {
-        return YES;
-    }
-    else if ([string isEqualToString:@"3"]) {
-        return YES;
-    }
-    else if ([string isEqualToString:@"4"]) {
-        return YES;
-    }
-    else if ([string isEqualToString:@"5"]) {
-        return YES;
-    }
-    else if ([string isEqualToString:@"6"]) {
-        return YES;
-    }
-    else if ([string isEqualToString:@"7"]) {
-        return YES;
-    }
-    else if ([string isEqualToString:@"8"]) {
-        return YES;
-    }
-    else if ([string isEqualToString:@"9"]) {
-        return YES;
-    }
-    return NO;
+- (BOOL)isNumber:(NSString *)string {
+    NSSet *numbersSet = [NSSet setWithObjects:@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
+    return [numbersSet containsObject:string];
 }
 
 #pragma mark - Calculate process:
